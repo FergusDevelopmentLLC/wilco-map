@@ -1,5 +1,5 @@
 module.exports = {
   basemap: 'light-v10',
-  spriteVersion: 'sprite',
-  script_folder: '/mnt/c/Users/wcarter/projects/wilco-map'
+  spriteVersion: 'sprite@2x',
+  script_folder: '/home/cron/bin/wilco-map'
 };
