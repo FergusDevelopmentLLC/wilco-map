@@ -28,7 +28,7 @@ const scaleFactor = INPUT_SPRITE_PNG.includes('@2x') ? 2 : 1;
 
 // Read the JSON file for existing styles and generated styles
 const defaultJson = JSON.parse(fs.readFileSync(INPUT_SPRITE_JSON, 'utf8'));
-const styles = JSON.parse(fs.readFileSync('wells_styles.json', 'utf8'));
+const styles = JSON.parse(fs.readFileSync(`${script_folder}/wells_styles.json`, 'utf8'));
 
 // SVG generation functions
 const SVG_TRIANGLE = (style) => {
