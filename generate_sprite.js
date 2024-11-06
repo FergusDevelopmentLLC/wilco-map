@@ -1,13 +1,18 @@
 const fs = require('fs');
-const Jimp = require('jimp');
+const Jimp = require('jimp').default;
 const svgToImg = require('svg-to-img');
 const { basemap } = require('./constants');
 const { spriteVersion } = require('./constants');
+const { script_folder } = require('./constants');
+
+console.log("basemap=", basemap)
+console.log("spriteVersion=", spriteVersion)
+console.log("script_folder=", script_folder)
 
 // Constants for input and output paths
-const INPUT_SPRITE_PNG = `default_sprites/${basemap}/${spriteVersion}.png`;
-const INPUT_SPRITE_JSON = `default_sprites/${basemap}/${spriteVersion}.json`;
-const OUTPUT_DIR = `generated/${basemap}`;
+const INPUT_SPRITE_PNG = `${script_folder}/default_sprites/${basemap}/${spriteVersion}.png`;
+const INPUT_SPRITE_JSON = `${script_folder}/default_sprites/${basemap}/${spriteVersion}.json`;
+const OUTPUT_DIR = `${script_folder}/generated/${basemap}`;
 const OUTPUT_SPRITE_PNG = `${OUTPUT_DIR}/${spriteVersion}.png`;
 const OUTPUT_SPRITE_JSON = `${OUTPUT_DIR}/${spriteVersion}.json`;
 
@@ -188,6 +193,7 @@ const generateSpriteSheet = (styles, scaleFactor = 1, offsetY = 0, defaultSprite
 };
 
 // Load the default sprite PNG to dynamically determine its width and height
+console.log("INPUT_SPRITE_PNG=", INPUT_SPRITE_PNG)
 Jimp.read(INPUT_SPRITE_PNG)
   .then(defaultSprite => {
     const DEFAULT_SPRITE_WIDTH = defaultSprite.bitmap.width;
