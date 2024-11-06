@@ -16,6 +16,7 @@ const OUTPUT_DIR = `${script_folder}/generated/${basemap}`;
 const OUTPUT_SPRITE_PNG = `${OUTPUT_DIR}/${spriteVersion}.png`;
 const OUTPUT_SPRITE_JSON = `${OUTPUT_DIR}/${spriteVersion}.json`;
 
+//refactor
 // Ensure the output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
