@@ -14,13 +14,13 @@ log_msg() {
 }
 
 # Load the .env file and check for errors
-if [ -f "$SCRIPT_FOLDER"/.env ]; then
-    if ! export $(grep -v '^#' "$SCRIPT_FOLDER"/.env | xargs); then
+if [ -f "$SCRIPT_FOLDER"/scripts/.env ]; then
+    if ! export $(grep -v '^#' "$SCRIPT_FOLDER"/scripts/.env | xargs); then
         log_msg "ERROR: Failed to load environment variables from .env file."
         exit 1
     fi
 else
-    log_msg "ERROR: .env file not found in $SCRIPT_FOLDER."
+    log_msg "ERROR: .env file not found in $SCRIPT_FOLDER/scripts/."
     exit 1
 fi
 
