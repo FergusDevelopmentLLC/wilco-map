@@ -13,7 +13,7 @@
     "shape": "circle",
     "height": 20,
     "width": 20,
-    "fill_color": "Green",
+    "fill_color": "Red",
     "stroke_color": "Red",
     "stroke_width": 2
   },
@@ -22,7 +22,7 @@
     "shape": "square",
     "height": 20,
     "width": 20,
-    "fill_color": "Blue",
+    "fill_color": "Red",
     "stroke_color": "White",
     "stroke_width": 2
   },
@@ -31,7 +31,7 @@
     "shape": "star-7pt",
     "height": 20,
     "width": 20,
-    "fill_color": "Yellow",
+    "fill_color": "Red",
     "stroke_color": "Blue",
     "stroke_width": 2
   },
@@ -40,7 +40,7 @@
     "shape": "triangle",
     "height": 20,
     "width": 20,
-    "fill_color": "Orange",
+    "fill_color": "Red",
     "stroke_color": "Red",
     "stroke_width": 2
   },
@@ -49,7 +49,7 @@
     "shape": "circle",
     "height": 20,
     "width": 20,
-    "fill_color": "Purple",
+    "fill_color": "Red",
     "stroke_color": "Red",
     "stroke_width": 2
   },
@@ -58,7 +58,7 @@
     "shape": "square",
     "height": 20,
     "width": 20,
-    "fill_color": "Pink",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -67,7 +67,7 @@
     "shape": "star-7pt",
     "height": 20,
     "width": 20,
-    "fill_color": "White",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -76,7 +76,7 @@
     "shape": "triangle",
     "height": 20,
     "width": 20,
-    "fill_color": "Gray",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -85,7 +85,7 @@
     "shape": "circle",
     "height": 20,
     "width": 20,
-    "fill_color": "Brown",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -94,7 +94,7 @@
     "shape": "square",
     "height": 20,
     "width": 20,
-    "fill_color": "Cyan",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -103,7 +103,7 @@
     "shape": "star-7pt",
     "height": 20,
     "width": 20,
-    "fill_color": "Magenta",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -112,7 +112,7 @@
     "shape": "triangle",
     "height": 20,
     "width": 20,
-    "fill_color": "Violet",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -121,7 +121,7 @@
     "shape": "circle",
     "height": 20,
     "width": 20,
-    "fill_color": "Teal",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   },
@@ -130,7 +130,7 @@
     "shape": "square",
     "height": 20,
     "width": 20,
-    "fill_color": "Blue",
+    "fill_color": "Red",
     "stroke_color": "Black",
     "stroke_width": 2
   }
