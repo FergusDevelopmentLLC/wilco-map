@@ -8,6 +8,11 @@ SCRIPT_FOLDER=$(jq -r '.script.script_folder' "$CONFIG_FILE")
 LOG_FOLDER=$(jq -r '.log.log_folder' "$CONFIG_FILE")
 LOG_FILE=$(jq -r '.log.log_file' "$CONFIG_FILE")
 
+# Function to log messages with timestamps
+log_msg() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $(basename "$0") - $1" | tee -a "$LOG_FOLDER/$LOG_FILE"
+}
+
 # Load the .env file and check for errors
 if [ -f "$SCRIPT_FOLDER"/.env ]; then
     if ! export $(grep -v '^#' "$SCRIPT_FOLDER"/.env | xargs); then
@@ -18,11 +23,6 @@ else
     log_msg "ERROR: .env file not found in $SCRIPT_FOLDER."
     exit 1
 fi
-
-# Function to log messages with timestamps
-log_msg() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $(basename "$0") - $1" | tee -a "$LOG_FOLDER/$LOG_FILE"
-}
 
 # List of map configurations to process
 map_configs=(
