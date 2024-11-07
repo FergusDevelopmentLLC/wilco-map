@@ -3,6 +3,7 @@
 CONFIG_FILE="$1"
 
 OUTPUT_FOLDER=$(jq -r '.output.output_folder' "$CONFIG_FILE")
+SCRIPT_FOLDER=$(jq -r '.script.script_folder' "$CONFIG_FILE")
 LOG_FOLDER=$(jq -r '.log.log_folder' "$CONFIG_FILE")
 LOG_FILE=$(jq -r '.log.log_file' "$CONFIG_FILE")
 
