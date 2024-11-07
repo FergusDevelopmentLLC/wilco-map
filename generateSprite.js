@@ -190,3 +190,4 @@ Jimp.read(INPUT_SPRITE_PNG)
   .catch(err => {
     console.error('Error loading default sprite PNG:', err);
   });
+//refactor
