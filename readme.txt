@@ -50,8 +50,8 @@ module.exports = {
   spriteVersion: 'sprite'
 };
 
-Execute generate_sprite.js to generate the low resolution sprite.
-PS C:\...\sprites\generate> node generate_sprite.js
+Execute generateSprite.js to generate the low resolution sprite.
+PS C:\...\sprites\generate> node generateSprite.js
 This will create:
 sprites\generate\generated\light-v10\sprite.png';
 sprites\generate\generated\light-v10\sprite.json';
@@ -72,8 +72,8 @@ module.exports = {
   spriteVersion: 'sprite@2x'
 };
 
-Execute generate_sprite.js to generate the low resolution sprite.
-PS C:\...\sprites\generate> node generate_sprite.js
+Execute generateSprite.js to generate the low resolution sprite.
+PS C:\...\sprites\generate> node generateSprite.js
 This will create:
 sprites\generate\generated\light-v10\sprite@2x.png';
 sprites\generate\generated\light-v10\sprite@2x.json';
