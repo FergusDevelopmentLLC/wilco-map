@@ -2,6 +2,7 @@
 
 CONFIG_FILE="$1"
 
+# Load configurations
 OUTPUT_FOLDER=$(jq -r '.output.output_folder' "$CONFIG_FILE")
 SCRIPT_FOLDER=$(jq -r '.script.script_folder' "$CONFIG_FILE")
 LOG_FOLDER=$(jq -r '.log.log_folder' "$CONFIG_FILE")
@@ -42,10 +43,17 @@ for config in "${map_configs[@]}"; do
     fi
 done
 
-# Set timestamp and your PAT
+# Git commands with timestamp
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 
-$SCRIPT_FOLDER/git add .
+# Ensure GITHUB_PAT is set as an environment variable
+if [ -z "$GITHUB_PAT" ]; then
+    log_msg "Error: GITHUB_PAT environment variable is not set."
+    exit 1
+fi
+
+# Perform Git operations
+cd "$SCRIPT_FOLDER" || exit
+git add .
 git commit -m "new sprite generated ${timestamp}"
 git push https://$GITHUB_PAT@github.com/FergusDevelopmentLLc/wilco-map.git
-
