@@ -41,3 +41,11 @@ for config in "${map_configs[@]}"; do
         log_msg "Error generating sprite for base map: $base_map, version: $sprite_version"
     fi
 done
+
+# Set timestamp and your PAT
+timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+
+$SCRIPT_FOLDER/git add .
+git commit -m "new sprite generated ${timestamp}"
+git push https://$GITHUB_PAT@github.com/FergusDevelopmentLLc/wilco-map.git
+
