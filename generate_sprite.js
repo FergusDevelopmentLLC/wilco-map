@@ -1,22 +1,27 @@
 const fs = require('fs');
 const Jimp = require('jimp').default;
 const svgToImg = require('svg-to-img');
-const { basemap } = require('./constants');
-const { spriteVersion } = require('./constants');
-const { script_folder } = require('./constants');
+const { SVG_TRIANGLE, SVG_SQUARE, SVG_CIRCLE, SVG_STAR_7PT } = require('./svgShapes');
 
-console.log("basemap=", basemap)
-console.log("spriteVersion=", spriteVersion)
-console.log("script_folder=", script_folder)
+// Get arguments from the command line (now including OUTPUT_DIR)
+const base_map = process.argv[2];
+const sprite_version = process.argv[3];
+const OUTPUT_DIR = process.argv[4];
 
-// Constants for input and output paths
-const INPUT_SPRITE_PNG = `${script_folder}/default_sprites/${basemap}/${spriteVersion}.png`;
-const INPUT_SPRITE_JSON = `${script_folder}/default_sprites/${basemap}/${spriteVersion}.json`;
-const OUTPUT_DIR = `${script_folder}/generated/${basemap}`;
-const OUTPUT_SPRITE_PNG = `${OUTPUT_DIR}/${spriteVersion}.png`;
-const OUTPUT_SPRITE_JSON = `${OUTPUT_DIR}/${spriteVersion}.json`;
+// Set script_folder to the directory where this script is located
+const script_folder = __dirname;
 
-//refactor
+if (!base_map || !sprite_version || !OUTPUT_DIR) {
+  console.error("Usage: node script.js <base_map> <sprite_version> <output_dir>");
+  process.exit(1);
+}
+
+// Constants for input paths
+const INPUT_SPRITE_PNG = `${script_folder}/default_sprites/${base_map}/${sprite_version}.png`;
+const INPUT_SPRITE_JSON = `${script_folder}/default_sprites/${base_map}/${sprite_version}.json`;
+const OUTPUT_SPRITE_PNG = `${OUTPUT_DIR}/${sprite_version}.png`;
+const OUTPUT_SPRITE_JSON = `${OUTPUT_DIR}/${sprite_version}.json`;
+
 // Ensure the output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -29,57 +34,6 @@ const scaleFactor = INPUT_SPRITE_PNG.includes('@2x') ? 2 : 1;
 // Read the JSON file for existing styles and generated styles
 const defaultJson = JSON.parse(fs.readFileSync(INPUT_SPRITE_JSON, 'utf8'));
 const styles = JSON.parse(fs.readFileSync(`${script_folder}/wells_styles.json`, 'utf8'));
-
-// SVG generation functions
-const SVG_TRIANGLE = (style) => {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-${
-    0.2222222222222222 * style.width
-  } -${0.2222222222222222 * style.width} ${1.444444444444444 * style.width} ${
-    1.444444444444444 * style.width
-  }" height="${style.height}" width="${style.width}">
-        <polygon points="${style.width / 2},0 ${style.width},${
-    style.height
-  } 0,${style.height}" fill="${style.fill_color}" stroke="${
-    style.stroke_color
-  }" stroke-width="${style.stroke_width}" stroke-linejoin="round" />
-      </svg>`;
-};
-
-const SVG_SQUARE = (style) => {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-${
-    0.2222222222222222 * style.width
-  } -${0.2222222222222222 * style.width} ${1.444444444444444 * style.width} ${
-    1.444444444444444 * style.width
-  }" height="${style.height}" width="${style.width}">
-        <rect width="${style.width}" height="${style.height}" fill="${
-    style.fill_color
-  }" stroke="${style.stroke_color}" stroke-width="${
-    style.stroke_width
-  }" stroke-linejoin="round" />
-      </svg>`;
-};
-
-const SVG_CIRCLE = (style) => {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-${
-    0.2222222222222222 * style.width
-  } -${0.2222222222222222 * style.width} ${1.444444444444444 * style.width} ${
-    1.444444444444444 * style.width
-  }" height="${style.height}" width="${style.width}">
-        <circle cx="${style.width / 2}" cy="${style.height / 2}" r="${
-    Math.min(style.width, style.height) / 2
-  }" fill="${style.fill_color}" stroke="${style.stroke_color}" stroke-width="${
-    style.stroke_width
-  }" stroke-linejoin="round" />
-      </svg>`;
-};
-
-const SVG_STAR_7PT = (style) => {
-  return `<svg width="${style.height}" height="${style.width}" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill="${style.fill_color}" d="M62.6279 28.2189L50.4186 1L38.7907 28.2189L10.8837 19.3432L24.8372 47.1538L1 63.7219L28.907 69.6391L26.5814 101L50.4186 79.6982L74.8372 101L72.5116 69.6391L101 63.7219L76.5814 47.1538L91.1163 19.3432L62.6279 28.2189Z" />
-    <path stroke="${style.stroke_color}" stroke-linejoin="round" d="M62.6279 28.2189L50.4186 1L38.7907 28.2189L10.8837 19.3432L24.8372 47.1538L1 63.7219L28.907 69.6391L26.5814 101L50.4186 79.6982L74.8372 101L72.5116 69.6391L101 63.7219L76.5814 47.1538L91.1163 19.3432L62.6279 28.2189Z" />
-    <path stroke="${style.stroke_color}" stroke-width="${style.stroke_width}" stroke-opacity="1" stroke-linejoin="round" d="M62.6279 28.2189L50.4186 1L38.7907 28.2189L10.8837 19.3432L24.8372 47.1538L1 63.7219L28.907 69.6391L26.5814 101L50.4186 79.6982L74.8372 101L72.5116 69.6391L101 63.7219L76.5814 47.1538L91.1163 19.3432L62.6279 28.2189Z" />
-</svg>`;
-};
 
 // Function to generate SVG sprite sheet and JSON mapping
 const generateSpriteSheet = (styles, scaleFactor = 1, offsetY = 0, defaultSpriteWidth, defaultSpriteHeight) => {
@@ -194,7 +148,7 @@ const generateSpriteSheet = (styles, scaleFactor = 1, offsetY = 0, defaultSprite
 };
 
 // Load the default sprite PNG to dynamically determine its width and height
-console.log("INPUT_SPRITE_PNG=", INPUT_SPRITE_PNG)
+console.log("INPUT_SPRITE_PNG=", INPUT_SPRITE_PNG);
 Jimp.read(INPUT_SPRITE_PNG)
   .then(defaultSprite => {
     const DEFAULT_SPRITE_WIDTH = defaultSprite.bitmap.width;
@@ -228,7 +182,7 @@ Jimp.read(INPUT_SPRITE_PNG)
 
     // Merge the JSON data with the generated jsonMapping
     const combinedJson = { ...defaultJson, ...jsonMapping };
-    console.log("combinedJson", combinedJson)
+    console.log("combinedJson", combinedJson);
 
     // Write the JSON to file
     fs.writeFileSync(OUTPUT_SPRITE_JSON, JSON.stringify(combinedJson, null, 2), 'utf8');
