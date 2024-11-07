@@ -67,4 +67,4 @@ fi
 cd "$SCRIPT_FOLDER" || exit
 git add .
 git commit -m "new sprite generated ${timestamp}"
-git push https://$GITHUB_PAT@github.com/FergusDevelopmentLLc/wilco-map.git
+git push https://$GITHUB_PAT@github.com/FergusDevelopmentLLC/wilco-map.git
