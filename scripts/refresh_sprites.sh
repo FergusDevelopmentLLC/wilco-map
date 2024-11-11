@@ -42,9 +42,7 @@ random_fruit=${fruits[RANDOM % ${#fruits[@]}]}
 if [ -d "$OUTPUT_FOLDER" ]; then
     if [ "$(ls -A "$OUTPUT_FOLDER")" ]; then
         log_msg "WARNING: $OUTPUT_FOLDER is not empty. Deleting all contents before proceeding."
-
-        # Uncomment the following line to actually perform the deletion
-        rm -rf "${OUTPUT_FOLDER:?}/*"
+        rm -rf "${OUTPUT_FOLDER:?}/"*
         log_msg "All files and folders in $OUTPUT_FOLDER have been deleted."
     else
         log_msg "$OUTPUT_FOLDER is empty. Proceeding with sprite generation."
