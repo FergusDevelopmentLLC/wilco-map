@@ -88,6 +88,9 @@ random_fruit=${fruits[RANDOM % ${#fruits[@]}]}
 # Prepare commit message
 commit_msg="${random_fruit} - New sprite generated ${timestamp}"
 
+# Write the commit message to a file
+echo "$commit_msg" > "$SCRIPT_FOLDER/scripts/commit_msg.txt"
+
 # Perform Git operations with enhanced logging
 log_msg "Performing git operations in $SCRIPT_FOLDER..."
 cd "$SCRIPT_FOLDER" || { log_msg "Error: Failed to change directory to $SCRIPT_FOLDER"; exit 1; }
@@ -101,9 +104,14 @@ else
     exit 1
 fi
 
+# Log the commit message before committing
 log_msg "Committing changes with message: $commit_msg"
-if git_output=$(git commit -m "$commit_msg" 2>&1); then
+
+# Commit changes using commit_msg.txt content as the commit message
+if git_output=$(git commit -F "$SCRIPT_FOLDER/scripts/commit_msg.txt" 2>&1); then
     log_msg "Commit completed successfully."
+    # Clear commit_msg.txt after a successful commit
+    > "$SCRIPT_FOLDER/scripts/commit_msg.txt"
 else
     log_msg "Error: git commit failed. Full output: $git_output"
     exit 1
