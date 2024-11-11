@@ -90,3 +90,32 @@ Require stack:
 2024-11-10 21:51:50 - refresh_sprites.sh - Successfully generated sprite for base map: streets-v11, version: sprite@2x
 2024-11-10 21:51:50 - refresh_sprites.sh - Performing git operations in /mnt/c/Users/wcarter/projects/wilco-map...
 2024-11-10 21:51:50 - refresh_sprites.sh - Performing: git add .
+2024-11-10 21:51:51 - refresh_sprites.sh - git add completed successfully.
+2024-11-10 21:51:51 - refresh_sprites.sh - Committing changes with message: Apple - New sprite generated 2024-11-10 21:51:50
+2024-11-10 21:51:52 - refresh_sprites.sh - Commit completed successfully.
+2024-11-10 21:51:52 - refresh_sprites.sh - Pushing changes to GitHub...
+2024-11-10 21:51:54 - refresh_sprites.sh - Changes successfully pushed to GitHub.
+2024-11-10 21:53:52 - refresh_sprites.sh - WARNING: /mnt/c/Users/wcarter/projects/wilco-map/generated is not empty. Deleting all contents before proceeding.
+2024-11-10 21:53:52 - refresh_sprites.sh - All files and folders in /mnt/c/Users/wcarter/projects/wilco-map/generated have been deleted.
+2024-11-10 21:53:52 - refresh_sprites.sh - Starting sprite generation for base map: dark-v10, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/dark-v10
+2024-11-10 21:54:06 - refresh_sprites.sh - Successfully generated sprite for base map: dark-v10, version: sprite
+2024-11-10 21:54:06 - refresh_sprites.sh - Starting sprite generation for base map: dark-v10, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/dark-v10
+2024-11-10 21:54:20 - refresh_sprites.sh - Successfully generated sprite for base map: dark-v10, version: sprite@2x
+2024-11-10 21:54:20 - refresh_sprites.sh - Starting sprite generation for base map: light-v10, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/light-v10
+2024-11-10 21:54:35 - refresh_sprites.sh - Successfully generated sprite for base map: light-v10, version: sprite
+2024-11-10 21:54:35 - refresh_sprites.sh - Starting sprite generation for base map: light-v10, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/light-v10
+2024-11-10 21:54:48 - refresh_sprites.sh - Successfully generated sprite for base map: light-v10, version: sprite@2x
+2024-11-10 21:54:48 - refresh_sprites.sh - Starting sprite generation for base map: outdoors-v11, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/outdoors-v11
+2024-11-10 21:55:03 - refresh_sprites.sh - Successfully generated sprite for base map: outdoors-v11, version: sprite
+2024-11-10 21:55:03 - refresh_sprites.sh - Starting sprite generation for base map: outdoors-v11, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/outdoors-v11
+2024-11-10 21:55:17 - refresh_sprites.sh - Successfully generated sprite for base map: outdoors-v11, version: sprite@2x
+2024-11-10 21:55:17 - refresh_sprites.sh - Starting sprite generation for base map: satellite-streets-v11, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/satellite-streets-v11
+2024-11-10 21:55:32 - refresh_sprites.sh - Successfully generated sprite for base map: satellite-streets-v11, version: sprite
+2024-11-10 21:55:32 - refresh_sprites.sh - Starting sprite generation for base map: satellite-streets-v11, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/satellite-streets-v11
+2024-11-10 21:55:46 - refresh_sprites.sh - Successfully generated sprite for base map: satellite-streets-v11, version: sprite@2x
+2024-11-10 21:55:46 - refresh_sprites.sh - Starting sprite generation for base map: streets-v11, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/streets-v11
+2024-11-10 21:56:00 - refresh_sprites.sh - Successfully generated sprite for base map: streets-v11, version: sprite
+2024-11-10 21:56:00 - refresh_sprites.sh - Starting sprite generation for base map: streets-v11, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/streets-v11
+2024-11-10 21:56:14 - refresh_sprites.sh - Successfully generated sprite for base map: streets-v11, version: sprite@2x
+2024-11-10 21:56:14 - refresh_sprites.sh - Performing git operations in /mnt/c/Users/wcarter/projects/wilco-map...
+2024-11-10 21:56:14 - refresh_sprites.sh - Performing: git add .
