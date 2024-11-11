@@ -1,0 +1,92 @@
+2024-11-10 21:47:06 - refresh_sprites.sh - Error: /mnt/c/Users/wcarter/projects/wilco-map/generated does not exist. Exiting.
+2024-11-10 21:47:21 - refresh_sprites.sh - /mnt/c/Users/wcarter/projects/wilco-map/generated is empty. Proceeding with sprite generation.
+2024-11-10 21:47:21 - refresh_sprites.sh - Starting sprite generation for base map: dark-v10, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/dark-v10
+2024-11-10 21:47:28 - refresh_sprites.sh - Error generating sprite for base map: dark-v10, version: sprite
+2024-11-10 21:47:28 - refresh_sprites.sh - Node output: internal/modules/cjs/loader.js:934
+  throw err;
+  ^
+
+Error: Cannot find module 'pg'
+Require stack:
+- /mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:931:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:27)
+    at Module.require (internal/modules/cjs/loader.js:1003:19)
+    at require (internal/modules/cjs/helpers.js:107:18)
+    at Object.<anonymous> (/mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js:6:20)
+    at Module._compile (internal/modules/cjs/loader.js:1114:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1143:10)
+    at Module.load (internal/modules/cjs/loader.js:979:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:819:12)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:75:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js' ]
+}
+2024-11-10 21:47:28 - refresh_sprites.sh - Starting sprite generation for base map: dark-v10, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/dark-v10
+2024-11-10 21:47:35 - refresh_sprites.sh - Error generating sprite for base map: dark-v10, version: sprite@2x
+2024-11-10 21:47:35 - refresh_sprites.sh - Node output: internal/modules/cjs/loader.js:934
+  throw err;
+  ^
+
+Error: Cannot find module 'pg'
+Require stack:
+- /mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:931:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:27)
+    at Module.require (internal/modules/cjs/loader.js:1003:19)
+    at require (internal/modules/cjs/helpers.js:107:18)
+    at Object.<anonymous> (/mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js:6:20)
+    at Module._compile (internal/modules/cjs/loader.js:1114:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1143:10)
+    at Module.load (internal/modules/cjs/loader.js:979:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:819:12)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:75:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js' ]
+}
+2024-11-10 21:47:35 - refresh_sprites.sh - Starting sprite generation for base map: light-v10, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/light-v10
+2024-11-10 21:47:42 - refresh_sprites.sh - Error generating sprite for base map: light-v10, version: sprite
+2024-11-10 21:47:42 - refresh_sprites.sh - Node output: internal/modules/cjs/loader.js:934
+  throw err;
+  ^
+
+Error: Cannot find module 'pg'
+Require stack:
+- /mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:931:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:27)
+    at Module.require (internal/modules/cjs/loader.js:1003:19)
+    at require (internal/modules/cjs/helpers.js:107:18)
+    at Object.<anonymous> (/mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js:6:20)
+    at Module._compile (internal/modules/cjs/loader.js:1114:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1143:10)
+    at Module.load (internal/modules/cjs/loader.js:979:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:819:12)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:75:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/mnt/c/Users/wcarter/projects/wilco-map/refreshSprite.js' ]
+}
+2024-11-10 21:47:42 - refresh_sprites.sh - Starting sprite generation for base map: light-v10, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/light-v10
+2024-11-10 21:49:18 - refresh_sprites.sh - /mnt/c/Users/wcarter/projects/wilco-map/generated is empty. Proceeding with sprite generation.
+2024-11-10 21:49:18 - refresh_sprites.sh - Starting sprite generation for base map: dark-v10, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/dark-v10
+2024-11-10 21:49:36 - refresh_sprites.sh - Successfully generated sprite for base map: dark-v10, version: sprite
+2024-11-10 21:49:37 - refresh_sprites.sh - Starting sprite generation for base map: dark-v10, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/dark-v10
+2024-11-10 21:49:53 - refresh_sprites.sh - Successfully generated sprite for base map: dark-v10, version: sprite@2x
+2024-11-10 21:49:53 - refresh_sprites.sh - Starting sprite generation for base map: light-v10, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/light-v10
+2024-11-10 21:50:09 - refresh_sprites.sh - Successfully generated sprite for base map: light-v10, version: sprite
+2024-11-10 21:50:09 - refresh_sprites.sh - Starting sprite generation for base map: light-v10, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/light-v10
+2024-11-10 21:50:25 - refresh_sprites.sh - Successfully generated sprite for base map: light-v10, version: sprite@2x
+2024-11-10 21:50:25 - refresh_sprites.sh - Starting sprite generation for base map: outdoors-v11, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/outdoors-v11
+2024-11-10 21:50:39 - refresh_sprites.sh - Successfully generated sprite for base map: outdoors-v11, version: sprite
+2024-11-10 21:50:39 - refresh_sprites.sh - Starting sprite generation for base map: outdoors-v11, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/outdoors-v11
+2024-11-10 21:50:54 - refresh_sprites.sh - Successfully generated sprite for base map: outdoors-v11, version: sprite@2x
+2024-11-10 21:50:54 - refresh_sprites.sh - Starting sprite generation for base map: satellite-streets-v11, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/satellite-streets-v11
+2024-11-10 21:51:07 - refresh_sprites.sh - Successfully generated sprite for base map: satellite-streets-v11, version: sprite
+2024-11-10 21:51:07 - refresh_sprites.sh - Starting sprite generation for base map: satellite-streets-v11, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/satellite-streets-v11
+2024-11-10 21:51:22 - refresh_sprites.sh - Successfully generated sprite for base map: satellite-streets-v11, version: sprite@2x
+2024-11-10 21:51:22 - refresh_sprites.sh - Starting sprite generation for base map: streets-v11, version: sprite, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/streets-v11
+2024-11-10 21:51:36 - refresh_sprites.sh - Successfully generated sprite for base map: streets-v11, version: sprite
+2024-11-10 21:51:36 - refresh_sprites.sh - Starting sprite generation for base map: streets-v11, version: sprite@2x, output directory: /mnt/c/Users/wcarter/projects/wilco-map/generated/streets-v11
+2024-11-10 21:51:50 - refresh_sprites.sh - Successfully generated sprite for base map: streets-v11, version: sprite@2x
+2024-11-10 21:51:50 - refresh_sprites.sh - Performing git operations in /mnt/c/Users/wcarter/projects/wilco-map...
+2024-11-10 21:51:50 - refresh_sprites.sh - Performing: git add .
