@@ -1,0 +1,103 @@
+#!/bin/bash
+
+CONFIG_FILE="$1"
+
+# Load configurations
+OUTPUT_FOLDER=$(jq -r '.output.output_folder' "$CONFIG_FILE")
+SCRIPT_FOLDER=$(jq -r '.script.script_folder' "$CONFIG_FILE")
+LOG_FOLDER=$(jq -r '.log.log_folder' "$CONFIG_FILE")
+LOG_FILE=$(jq -r '.log.log_file' "$CONFIG_FILE")
+
+# Function to log messages with timestamps
+log_msg() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $(basename "$0") - $1" | tee -a "$LOG_FOLDER/$LOG_FILE"
+}
+
+# Load the .env file and check for errors
+if [ -f "$SCRIPT_FOLDER"/scripts/.env ]; then
+    if ! export $(grep -v '^#' "$SCRIPT_FOLDER"/scripts/.env | xargs); then
+        log_msg "ERROR: Failed to load environment variables from .env file."
+        exit 1
+    fi
+else
+    log_msg "ERROR: .env file not found in $SCRIPT_FOLDER/scripts/."
+    exit 1
+fi
+
+# List of map configurations to process
+map_configs=(
+    "dark-v10 sprite ${OUTPUT_FOLDER}/dark-v10"
+    "dark-v10 sprite@2x ${OUTPUT_FOLDER}/dark-v10"
+    "light-v10 sprite ${OUTPUT_FOLDER}/light-v10"
+    "light-v10 sprite@2x ${OUTPUT_FOLDER}/light-v10"
+    "outdoors-v11 sprite ${OUTPUT_FOLDER}/outdoors-v11"
+    "outdoors-v11 sprite@2x ${OUTPUT_FOLDER}/outdoors-v11"
+    "satellite-streets-v11 sprite ${OUTPUT_FOLDER}/satellite-streets-v11"
+    "satellite-streets-v11 sprite@2x ${OUTPUT_FOLDER}/satellite-streets-v11"
+    "streets-v11 sprite ${OUTPUT_FOLDER}/streets-v11"
+    "streets-v11 sprite@2x ${OUTPUT_FOLDER}/streets-v11"
+)
+
+# Run the generateSprite script for each configuration
+for config in "${map_configs[@]}"; do
+    # Split the config string into variables
+    read -r base_map sprite_version output_dir <<< "$config"
+
+    # Log the start of processing for each map configuration
+    log_msg "Starting sprite generation for base map: $base_map, version: $sprite_version, output directory: $output_dir"
+
+    # Run the node command and capture output
+    if output=$(node "$SCRIPT_FOLDER/refreshSprite.js" "$base_map" "$sprite_version" "$output_dir" 2>&1); then
+        log_msg "Successfully generated sprite for base map: $base_map, version: $sprite_version"
+    else
+        log_msg "Error generating sprite for base map: $base_map, version: $sprite_version"
+        log_msg "Node output: $output"
+    fi
+done
+
+# Git commands with timestamp
+timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+
+# Ensure GITHUB_PAT is set as an environment variable
+if [ -z "$GITHUB_PAT" ]; then
+    log_msg "Error: GITHUB_PAT environment variable is not set."
+    exit 1
+fi
+
+# Fruit names array
+fruits=("Apple" "Banana" "Cherry" "Date" "Elderberry" "Fig" "Grape" "Honeydew" "Kiwi" "Lemon")
+# Select a random fruit
+random_fruit=${fruits[RANDOM % ${#fruits[@]}]}
+
+# Prepare commit message
+commit_msg="${random_fruit} - New sprite generated ${timestamp}"
+
+# Perform Git operations with enhanced logging
+log_msg "Performing git operations in $SCRIPT_FOLDER..."
+cd "$SCRIPT_FOLDER" || { log_msg "Error: Failed to change directory to $SCRIPT_FOLDER"; exit 1; }
+
+# git add with error handling
+log_msg "Performing: git add ."
+if git_output=$(git add . 2>&1); then
+    log_msg "git add completed successfully."
+else
+    log_msg "Error: git add failed. Output: $git_output"
+    exit 1
+fi
+
+log_msg "Committing changes with message: $commit_msg"
+if git_output=$(git commit -m "$commit_msg" 2>&1); then
+    log_msg "Commit completed successfully."
+else
+    log_msg "Error: git commit failed. Full output: $git_output"
+    exit 1
+fi
+
+# git push with error handling
+log_msg "Pushing changes to GitHub..."
+if git_output=$(git push https://$GITHUB_PAT@github.com/FergusDevelopmentLLC/wilco-map.git 2>&1); then
+    log_msg "Changes successfully pushed to GitHub."
+else
+    log_msg "Error: git push failed. Output: $git_output"
+    exit 1
+fi

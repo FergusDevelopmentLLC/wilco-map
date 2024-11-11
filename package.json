@@ -1,0 +1,16 @@
+{
+  "name": "wilco-map",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/FergusDevelopmentLLC/wilco-map.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "node generate_sprite.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jimp": "0.22.12",
+    "pg": "^8.13.1",
+    "svg-to-img": "2.0.9"
+  }
+}

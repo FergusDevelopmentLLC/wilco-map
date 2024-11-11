@@ -3,3 +3,8 @@
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/wilco-map.iml
+/node_modules/
+/scripts/.env
+/.env
+/data
+/yarn.lock

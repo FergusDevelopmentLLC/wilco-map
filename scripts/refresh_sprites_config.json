@@ -1,0 +1,12 @@
+{
+  "log": {
+    "log_folder": "/home/cron/bin",
+    "log_file": "refresh_sprites.log"
+  },
+  "script": {
+    "script_folder": "/home/cron/bin/wilco-map"
+  },
+  "output": {
+    "output_folder": "/home/cron/bin/wilco-map/generated"
+  }
+}
