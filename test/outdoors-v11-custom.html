@@ -21,43 +21,64 @@
 <div id="map"></div>
 
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjaWdjdHdkNzYwZGp3dTVtMGhhY2ZkaDloIn0.9qTtVfFnKXVe82B-6mJbqQ';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjaWdjdHdkNzYwZGp3dTVtMGhhY2ZkaDloIn0.9qTtVfFnKXVe82B-6mJbqQ';
 
-  function addPointsSourceAndLayer() {
-    // Add the points source from the external GeoJSON file
-    if (!map.getSource('points')) {
-      map.addSource('points', {
-        'type': 'geojson',
-        'data': './points.geojson' // Path to the external GeoJSON file
-      });
+    function addPointsSourceAndLayer() {
+        // Add the points source from the external GeoJSON file
+        if (!map.getSource('points')) {
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': './points.geojson' // Path to the external GeoJSON file
+            });
+        }
+
+        map.addLayer({
+            'id': 'points',
+            'type': 'symbol',
+            'source': 'points',
+            'layout': {
+                'icon-image': ['get', 'sprite_ndx'],
+                'icon-allow-overlap': true,
+                'icon-size': 1 // Adjust the size as needed
+            }
+        });
     }
 
-    map.addLayer({
-      'id': 'points',
-      'type': 'symbol',
-      'source': 'points',
-      'layout': {
-        'icon-image': ['get', 'sprite_ndx'],
-        'icon-allow-overlap': true,
-        'icon-size': 1 // Adjust the size as needed
-      }
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'https://fergusdevelopmentllc.github.io/wilco-map/styles/outdoors-v11/outdoors-v11.json', // initial style
+        center: [-97.7431, 30.2672], // starting position [lng, lat]
+        zoom: 9 // starting zoom
     });
-  }
 
-  var map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'https://fergusdevelopmentllc.github.io/wilco-map/styles/outdoors-v11/outdoors-v11.json', // initial style
-    center: [-97.7431, 30.2672], // starting position [lng, lat]
-    zoom: 9 // starting zoom
-  });
+    map.on("load", () => {
+        addPointsSourceAndLayer();
 
-  map.on("load", () => {
-    addPointsSourceAndLayer();
-  });
+        // Create a popup, but don't add it to the map yet
+        const popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
 
+        // Show popup on mouseenter
+        map.on('mouseenter', 'points', (e) => {
+            map.getCanvas().style.cursor = 'pointer';
+
+            // Get the `primary_use_name` property
+            const primaryUseName = e.features[0].properties.primary_use_name;
+
+            // Set the popup content and coordinates
+            popup.setLngLat(e.lngLat)
+                .setHTML(`<strong>Primary Use:</strong> ${primaryUseName}`)
+                .addTo(map);
+        });
+
+        // Hide popup on mouseleave
+        map.on('mouseleave', 'points', () => {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
+    });
 </script>
 </body>
 </html>
-
-
-
