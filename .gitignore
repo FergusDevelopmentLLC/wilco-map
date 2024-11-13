@@ -10,4 +10,9 @@
 /yarn.lock
 /refresh_sprites.log
 /scripts/refresh_sprites_config.json
-/generated
+/generated/dark-v10
+/generated/light-v10
+/generated/outdoors-v11
+/generated/satellite-streets-v11
+/generated/streets-v11
+
