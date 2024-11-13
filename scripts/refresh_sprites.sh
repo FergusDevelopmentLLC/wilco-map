@@ -38,15 +38,15 @@ done
 # List of map configurations to process
 map_configs=(
     "dark-v10 sprite ${OUTPUT_FOLDER}/dark-v10"
-    "dark-v10 sprite@2x ${OUTPUT_FOLDER}/dark-v10"
-    "light-v10 sprite ${OUTPUT_FOLDER}/light-v10"
-    "light-v10 sprite@2x ${OUTPUT_FOLDER}/light-v10"
-    "outdoors-v11 sprite ${OUTPUT_FOLDER}/outdoors-v11"
-    "outdoors-v11 sprite@2x ${OUTPUT_FOLDER}/outdoors-v11"
-    "satellite-streets-v11 sprite ${OUTPUT_FOLDER}/satellite-streets-v11"
-    "satellite-streets-v11 sprite@2x ${OUTPUT_FOLDER}/satellite-streets-v11"
-    "streets-v11 sprite ${OUTPUT_FOLDER}/streets-v11"
-    "streets-v11 sprite@2x ${OUTPUT_FOLDER}/streets-v11"
+#    "dark-v10 sprite@2x ${OUTPUT_FOLDER}/dark-v10"
+#    "light-v10 sprite ${OUTPUT_FOLDER}/light-v10"
+#    "light-v10 sprite@2x ${OUTPUT_FOLDER}/light-v10"
+#    "outdoors-v11 sprite ${OUTPUT_FOLDER}/outdoors-v11"
+#    "outdoors-v11 sprite@2x ${OUTPUT_FOLDER}/outdoors-v11"
+#    "satellite-streets-v11 sprite ${OUTPUT_FOLDER}/satellite-streets-v11"
+#    "satellite-streets-v11 sprite@2x ${OUTPUT_FOLDER}/satellite-streets-v11"
+#    "streets-v11 sprite ${OUTPUT_FOLDER}/streets-v11"
+#    "streets-v11 sprite@2x ${OUTPUT_FOLDER}/streets-v11"
 )
 
 # Run the generateSprite script for each configuration
