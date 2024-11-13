@@ -62,3 +62,5 @@ else
     log_msg "ERROR: S3 bucket is not defined in the config file."
     exit 1
 fi
+
+#refactor
