@@ -55,7 +55,7 @@ for config in "${map_configs[@]}"; do
     read -r base_map sprite_version output_dir <<< "$config"
 
     # Prepare and log the command
-    cmd="node \"$SCRIPT_FOLDER/generateSprite.js\" \"$base_map\" \"$sprite_version\" \"$output_dir\""
+    cmd="node \"$SCRIPT_FOLDER/generateSprite.js\" \"$SCRIPT_FOLDER/generate_sprite_config.json\" \"$base_map\" \"$sprite_version\" \"$output_dir\""
     log_msg "Executing: $cmd"
 
     # Execute the command and capture output

@@ -5,10 +5,11 @@ const svgToImg = require('svg-to-img');
 const { Client } = require('pg');
 const { SVG_TRIANGLE, SVG_SQUARE, SVG_CIRCLE, SVG_STAR_7PT } = require('./svgShapes');
 
-// Load configuration from JSON
-const config = JSON.parse(fs.readFileSync('generate_sprite_config.json', 'utf8'));
+const [CONFIG_FILE, BASE_MAP, SPRITE_VERSION, OUTPUT_FOLDER] = process.argv.slice(2);
 
-const [BASE_MAP, SPRITE_VERSION, OUTPUT_FOLDER] = process.argv.slice(2);
+// Load configuration from JSON
+const config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
+
 const SCRIPT_FOLDER = config.script.script_folder;
 const INPUT_SPRITE_PNG = path.join(SCRIPT_FOLDER, `default_sprites/${BASE_MAP}/${SPRITE_VERSION}.png`);
 const SCALE_FACTOR = INPUT_SPRITE_PNG.includes('@2x') ? 2 : 1;
