@@ -7,6 +7,10 @@ const { Client } = require('pg');
 
 // Get arguments from the command line
 const [base_map, sprite_version, OUTPUT_DIR] = process.argv.slice(2);
+console.log("base_map", base_map)
+console.log("sprite_version", sprite_version)
+console.log("OUTPUT_DIR", OUTPUT_DIR)
+
 const script_folder = __dirname;
 
 if (!base_map || !sprite_version || !OUTPUT_DIR) {

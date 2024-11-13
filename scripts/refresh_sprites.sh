@@ -54,11 +54,12 @@ for config in "${map_configs[@]}"; do
     # Split the config string into variables
     read -r base_map sprite_version output_dir <<< "$config"
 
-    # Log the start of processing for each map configuration
-    log_msg "Starting sprite generation for base map: $base_map, version: $sprite_version, output directory: $output_dir"
+    # Prepare and log the command
+    cmd="node \"$SCRIPT_FOLDER/refreshSprite.js\" \"$base_map\" \"$sprite_version\" \"$output_dir\""
+    log_msg "Executing: $cmd"
 
-    # Run the node command and capture output
-    if output=$(node "$SCRIPT_FOLDER/refreshSprite.js" "$base_map" "$sprite_version" "$output_dir" 2>&1); then
+    # Execute the command and capture output
+    if output=$(eval "$cmd" 2>&1); then
         # Check that the output directory contains files
         if [ -n "$(ls -A "$output_dir" 2>/dev/null)" ]; then
             log_msg "Successfully generated sprite for base map: $base_map, version: $sprite_version"
