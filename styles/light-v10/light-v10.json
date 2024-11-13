@@ -35,7 +35,7 @@
     50.8476
   ],
   "zoom": 4,
-  "sprite": "https://raw.githubusercontent.com/FergusDevelopmentLLC/sprites/wilco-map/generated/light-v10/sprite",
+  "sprite": "https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/light-v10/sprite",
   "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
   "layers": [
     {

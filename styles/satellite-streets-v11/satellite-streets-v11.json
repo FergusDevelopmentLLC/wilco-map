@@ -46,7 +46,7 @@
     40.7123
   ],
   "zoom": 14,
-  "sprite": "https://raw.githubusercontent.com/FergusDevelopmentLLC/wilco-map/main/generated/satellite-streets-v11/sprite",
+  "sprite": "https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/satellite-streets-v11/sprite",
   "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
   "layers": [
     {
