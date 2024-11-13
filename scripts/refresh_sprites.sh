@@ -17,23 +17,23 @@ log_msg() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $(basename "$0") - $1" | tee -a "$LOG_FOLDER/$LOG_FILE"
 }
 
-# Folders to be cleaned before processing
-map_styles=("dark-v10" "light-v10" "outdoors-v11" "satellite-streets-v11" "streets-v11")
-
-# Clean and check each map style folder
-for style in "${map_styles[@]}"; do
-    target_folder="${OUTPUT_FOLDER:?}/$style"
-    log_msg "Cleaning contents of $target_folder"
-
-    # Remove files and ensure folder is empty
-    rm -rf "${target_folder:?}"/* || log_msg "ERROR: Failed to delete files in $target_folder"
-    if [ -n "$(ls -A "$target_folder" 2>/dev/null)" ]; then
-        log_msg "ERROR: $target_folder is not empty after cleanup. Exiting."
-        exit 1
-    else
-        log_msg "$target_folder is successfully cleaned."
-    fi
-done
+## Folders to be cleaned before processing
+#map_styles=("dark-v10" "light-v10" "outdoors-v11" "satellite-streets-v11" "streets-v11")
+#
+## Clean and check each map style folder
+#for style in "${map_styles[@]}"; do
+#    target_folder="${OUTPUT_FOLDER:?}/$style"
+#    log_msg "Cleaning contents of $target_folder"
+#
+#    # Remove files and ensure folder is empty
+#    rm -rf "${target_folder:?}"/* || log_msg "ERROR: Failed to delete files in $target_folder"
+#    if [ -n "$(ls -A "$target_folder" 2>/dev/null)" ]; then
+#        log_msg "ERROR: $target_folder is not empty after cleanup. Exiting."
+#        exit 1
+#    else
+#        log_msg "$target_folder is successfully cleaned."
+#    fi
+#done
 
 # List of map configurations to process
 map_configs=(
