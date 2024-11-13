@@ -17,23 +17,23 @@ log_msg() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $(basename "$0") - $1" | tee -a "$LOG_FOLDER/$LOG_FILE"
 }
 
-# Check if $OUTPUT_FOLDER exists and is not empty
-if [ -d "$OUTPUT_FOLDER" ]; then
-    if [ "$(ls -A "$OUTPUT_FOLDER")" ]; then
-        log_msg "WARNING: $OUTPUT_FOLDER is not empty. Deleting all contents before proceeding."
-        rm -rf "${OUTPUT_FOLDER:?}/dark-v10"*
-        rm -rf "${OUTPUT_FOLDER:?}/light-v10"*
-        rm -rf "${OUTPUT_FOLDER:?}/outdoors-v11"*
-        rm -rf "${OUTPUT_FOLDER:?}/satellite-streets-v11"*
-        rm -rf "${OUTPUT_FOLDER:?}/streets-v11"*
-        log_msg "All files and folders in $OUTPUT_FOLDER have been deleted."
+# Folders to be cleaned before processing
+map_styles=("dark-v10" "light-v10" "outdoors-v11" "satellite-streets-v11" "streets-v11")
+
+# Clean and check each map style folder
+for style in "${map_styles[@]}"; do
+    target_folder="${OUTPUT_FOLDER:?}/$style"
+    log_msg "Cleaning contents of $target_folder"
+
+    # Remove files and ensure folder is empty
+    rm -rf "${target_folder:?}"/* || log_msg "ERROR: Failed to delete files in $target_folder"
+    if [ -n "$(ls -A "$target_folder" 2>/dev/null)" ]; then
+        log_msg "ERROR: $target_folder is not empty after cleanup. Exiting."
+        exit 1
     else
-        log_msg "$OUTPUT_FOLDER is empty. Proceeding with sprite generation."
+        log_msg "$target_folder is successfully cleaned."
     fi
-else
-    log_msg "Error: $OUTPUT_FOLDER does not exist. Exiting."
-    exit 1
-fi
+done
 
 # List of map configurations to process
 map_configs=(
@@ -49,7 +49,7 @@ map_configs=(
     "streets-v11 sprite@2x ${OUTPUT_FOLDER}/streets-v11"
 )
 
-#Run the generateSprite script for each configuration
+# Run the generateSprite script for each configuration
 for config in "${map_configs[@]}"; do
     # Split the config string into variables
     read -r base_map sprite_version output_dir <<< "$config"
@@ -59,14 +59,21 @@ for config in "${map_configs[@]}"; do
 
     # Run the node command and capture output
     if output=$(node "$SCRIPT_FOLDER/refreshSprite.js" "$base_map" "$sprite_version" "$output_dir" 2>&1); then
-        log_msg "Successfully generated sprite for base map: $base_map, version: $sprite_version"
+        # Check that the output directory contains files
+        if [ -n "$(ls -A "$output_dir" 2>/dev/null)" ]; then
+            log_msg "Successfully generated sprite for base map: $base_map, version: $sprite_version"
+        else
+            log_msg "ERROR: Sprite generation succeeded but $output_dir is empty."
+            exit 1
+        fi
     else
         log_msg "Error generating sprite for base map: $base_map, version: $sprite_version"
         log_msg "Node output: $output"
+        exit 1
     fi
 done
 
-#Upload to S3 bucket
+# Upload to S3 bucket
 if [ -n "$S3_BUCKET" ]; then
     log_msg "Uploading generated contents of $OUTPUT_FOLDER to S3 bucket: $S3_BUCKET"
 
@@ -80,5 +87,3 @@ else
     log_msg "ERROR: S3 bucket is not defined in the config file."
     exit 1
 fi
-
-#refactor
