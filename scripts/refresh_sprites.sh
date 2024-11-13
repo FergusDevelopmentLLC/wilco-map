@@ -17,6 +17,24 @@ log_msg() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $(basename "$0") - $1" | tee -a "$LOG_FOLDER/$LOG_FILE"
 }
 
+# Check if $OUTPUT_FOLDER exists and is not empty
+if [ -d "$OUTPUT_FOLDER" ]; then
+    if [ "$(ls -A "$OUTPUT_FOLDER")" ]; then
+        log_msg "WARNING: $OUTPUT_FOLDER is not empty. Deleting all contents before proceeding."
+        rm -rf "${OUTPUT_FOLDER:?}/dark-v10"*
+        rm -rf "${OUTPUT_FOLDER:?}/light-v10"*
+        rm -rf "${OUTPUT_FOLDER:?}/outdoors-v11"*
+        rm -rf "${OUTPUT_FOLDER:?}/satellite-streets-v11"*
+        rm -rf "${OUTPUT_FOLDER:?}/streets-v11"*
+        log_msg "All files and folders in $OUTPUT_FOLDER have been deleted."
+    else
+        log_msg "$OUTPUT_FOLDER is empty. Proceeding with sprite generation."
+    fi
+else
+    log_msg "Error: $OUTPUT_FOLDER does not exist. Exiting."
+    exit 1
+fi
+
 # List of map configurations to process
 map_configs=(
     "dark-v10 sprite ${OUTPUT_FOLDER}/dark-v10"
