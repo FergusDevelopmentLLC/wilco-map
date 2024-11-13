@@ -5,11 +5,11 @@
 /.idea/wilco-map.iml
 /.idea/workspace.xml
 /node_modules/
-/scripts/.env
-/.env
 /yarn.lock
-/refresh_sprites.log
+/generate_sprite_config.json
 /scripts/refresh_sprites_config.json
+/scripts/refresh_sprites.log
+/generate_sprite.log
 /generated/dark-v10
 /generated/light-v10
 /generated/outdoors-v11
