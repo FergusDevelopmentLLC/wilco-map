@@ -8,9 +8,6 @@ OUTPUT_FOLDER=$(jq -r '.output.output_folder' "$CONFIG_FILE")
 LOG_FOLDER=$(jq -r '.log.log_folder' "$CONFIG_FILE")
 LOG_FILE=$(jq -r '.log.log_file' "$CONFIG_FILE")
 S3_BUCKET=$(jq -r '.aws.s3_bucket' "$CONFIG_FILE")
-AWS_ACCESS_KEY_ID=$(jq -r '.aws.aws_access_key_id' "$CONFIG_FILE")
-AWS_SECRET_ACCESS_KEY=$(jq -r '.aws.aws_secret_access_key' "$CONFIG_FILE")
-AWS_DEFAULT_REGION=$(jq -r '.aws.aws_default_region' "$CONFIG_FILE")
 
 # Function to log messages with timestamps
 log_msg() {
