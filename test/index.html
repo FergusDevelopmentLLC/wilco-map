@@ -31,11 +31,11 @@
 <div id="basemap-selector">
     <label for="basemaps">Select Basemap:</label>
     <select id="basemaps">
-        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/outdoors-v11/outdoors-v11.json">Outdoors</option>
-        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/streets-v11/streets-v11.json">Streets</option>
-        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/light-v10/light-v10.json">Light</option>
-        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/dark-v10/dark-v10.json">Dark</option>
-        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/satellite-streets-v11/satellite-streets-v11.json">Satellite</option>
+        <option value="https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/styles/outdoors-v11/outdoors-v11.json">Outdoors</option>
+        <option value="https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/styles/streets-v11/streets-v11.json">Streets</option>
+        <option value="https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/styles/light-v10/light-v10.json">Light</option>
+        <option value="https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/styles/dark-v10/dark-v10.json">Dark</option>
+        <option value="https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/styles/satellite-streets-v11/satellite-streets-v11.json">Satellite</option>
     </select>
 </div>
 
@@ -66,7 +66,7 @@
 
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/outdoors-v11/outdoors-v11.json', // initial style
+        style: 'https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/styles/outdoors-v11/outdoors-v11.json', // initial style
         center: [-97.7431, 30.6],
         zoom: 9
     });
