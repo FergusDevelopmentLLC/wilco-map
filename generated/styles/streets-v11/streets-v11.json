@@ -35,7 +35,7 @@
     0
   ],
   "zoom": 3,
-  "sprite": "https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/streets-v11/sprite",
+  "sprite": "https://wilco-dashboard-files.s3.us-west-1.amazonaws.com/streets-v11/sprite",
   "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
   "layers": [
     {
