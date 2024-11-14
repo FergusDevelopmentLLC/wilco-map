@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom icons test map</title>
+    <title>Custom Icons Test Map</title>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.2/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.5.2/mapbox-gl.css" rel="stylesheet">
     <style>
@@ -15,20 +15,40 @@
             width: 100vw;
             height: 100vh;
         }
+        #basemap-selector {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            background: white;
+            padding: 5px;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 <body>
+
+<div id="basemap-selector">
+    <label for="basemaps">Select Basemap:</label>
+    <select id="basemaps">
+        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/outdoors-v11/outdoors-v11.json">Outdoors</option>
+        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/streets-v11/streets-v11.json">Streets</option>
+        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/light-v10/light-v10.json">Light</option>
+        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/dark-v10/dark-v10.json">Dark</option>
+        <option value="https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/satellite-streets-v11/satellite-streets-v11.json">Satellite</option>
+    </select>
+</div>
+
 <div id="map"></div>
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjaWdjdHdkNzYwZGp3dTVtMGhhY2ZkaDloIn0.9qTtVfFnKXVe82B-6mJbqQ';
 
     function addPointsSourceAndLayer() {
-        // Add the points source from the external GeoJSON file
         if (!map.getSource('points')) {
             map.addSource('points', {
                 'type': 'geojson',
-                'data': './points.geojson' // Path to the external GeoJSON file
+                'data': './points.geojson'
             });
         }
 
@@ -39,44 +59,47 @@
             'layout': {
                 'icon-image': ['get', 'sprite_ndx'],
                 'icon-allow-overlap': true,
-                'icon-size': 1 // Adjust the size as needed
+                'icon-size': 1
             }
         });
     }
 
     var map = new mapboxgl.Map({
-        container: 'map', // container ID
+        container: 'map',
         style: 'https://wilco-dashboard-files-test.s3.us-east-1.amazonaws.com/styles/outdoors-v11/outdoors-v11.json', // initial style
-        center: [-97.7431, 30.2672], // starting position [lng, lat]
-        zoom: 9 // starting zoom
+        center: [-97.7431, 30.6],
+        zoom: 9
     });
 
     map.on("load", () => {
         addPointsSourceAndLayer();
 
-        // Create a popup, but don't add it to the map yet
         const popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: false
         });
 
-        // Show popup on mouseenter
         map.on('mouseenter', 'points', (e) => {
             map.getCanvas().style.cursor = 'pointer';
-
-            // Get the `primary_use_name` property
             const primaryUseName = e.features[0].properties.primary_use_name;
-
-            // Set the popup content and coordinates
             popup.setLngLat(e.lngLat)
                 .setHTML(`<strong>Primary Use:</strong> ${primaryUseName}`)
                 .addTo(map);
         });
 
-        // Hide popup on mouseleave
         map.on('mouseleave', 'points', () => {
             map.getCanvas().style.cursor = '';
             popup.remove();
+        });
+    });
+
+    // Update map style when a new basemap is selected
+    document.getElementById('basemaps').addEventListener('change', function() {
+        const selectedStyle = this.value;
+        map.setStyle(selectedStyle);
+
+        map.once('styledata', () => {
+            addPointsSourceAndLayer();
         });
     });
 </script>
